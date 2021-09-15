@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShopController!{% endblock %}
+ {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets//plugins/OwlCarousel2-2.2.1/owl.theme.default.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets//plugins/OwlCarousel2-2.2.1/animate.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/main_styles.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/responsive.css")}}">
+            
+ {% endblock %}
+
+{% block body %}
+    {% include "shop/header.html.twig" %}
+        <div class="super_container">
+
+        <div class="fs_menu_overlay"></div>
+        <div class="hamburger_menu">
+            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li class="menu_item has-children">
+                        <a href="#">
+						usd
+						<i class="fa fa-angle-down"></i>
+					</a>
+                        <ul class="menu_selection">
+                            <li><a href="#">cad</a></li>
+                            <li><a href="#">aud</a></li>
+                            <li><a href="#">eur</a></li>
+                            <li><a href="#">gbp</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+						English
+						<i class="fa fa-angle-down"></i>
+					</a>
+                        <ul class="menu_selection">
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Italian</a></li>
+                            <li><a href="#">German</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+						My Account
+						<i class="fa fa-angle-down"></i>
+					</a>
+                        <ul class="menu_selection">
+                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="#">home</a></li>
+                    <li class="menu_item"><a href="#">shop</a></li>
+                    <li class="menu_item"><a href="#">promotion</a></li>
+                    <li class="menu_item"><a href="#">pages</a></li>
+                    <li class="menu_item"><a href="#">blog</a></li>
+                    <li class="menu_item"><a href="#">contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slider -->
+
+        <div class="main_slider" style="background-image:url({{asset("assets/images/slider_1.jpg")}})">
+            <div class="container fill_height">
+                <div class="row align-items-center fill_height">
+                    <div class="col">
+                        <div class="main_slider_content">
+                            <h6>Spring / Summer Collection 2017</h6>
+                            <h1>Get up to 30% Off New Arrivals</h1>
+                            <div class="red_button shop_now_button"><a href="#">shop now</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Arrivals -->
+
+        <div class="new_arrivals">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="section_title new_arrivals_title">
+                            <h2>New Arrivals</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col text-center">
+                        <div class="new_arrivals_sorting">
+                            {% include "shop/_new_arivals_sort_index.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+                            <!-- Product 1 -->
+
+                            {% for i in 1..10%}
+                                 {% include "shop/_product_item.html.twig" with {'category' : random(['men','women','accessories'])}%}  
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Best Sellers -->
+
+        <div class="best_sellers">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="section_title new_arrivals_title">
+                            <h2>Best Sellers</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="product_slider_container">
+                            <div class="owl-carousel owl-theme product_slider">
+                             
+                                    {% for i in 1..10%}
+                                        <div class="owl-item product_slider_item">
+                                                {% include "shop/_product_item.html.twig" with {'category' : ""}%}  
+                                        </div>
+                                    {% endfor %}
+                               
+                            </div>
+
+                            <!-- Slider Navigation -->
+
+                            <div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
+                                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                            </div>
+                            <div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+
+        <div class="newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+                            <h4>Newsletter</h4>
+                            <p>Subscribe to our newsletter and get 20% off your first purchase</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="post">
+                            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                                <input id="newsletter_email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
+                                <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+    </div>
+    {% include "shop/footer.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset("assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js")}}"></script>
+    <script src="{{asset("assets/plugins/easing/easing.js")}}"></script>
+    <script src="{{asset("assets/js/custom.js")}}"></script>   
+{% endblock %}
+
